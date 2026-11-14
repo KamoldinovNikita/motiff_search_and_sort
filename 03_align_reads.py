@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Выравнивание полных ридов."""
+"""Align full-length reads."""
 
 import argparse
 import os

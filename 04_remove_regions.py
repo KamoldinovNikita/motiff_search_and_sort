@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Исключение 45 интервалов."""
+"""Exclude 45 intervals."""
 
 import argparse
 import os

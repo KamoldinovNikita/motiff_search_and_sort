@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Последовательный запуск этапов 01–09."""
+"""Run stages 01–09."""
 
 import argparse
 import os
@@ -44,7 +44,7 @@ def ask_path(label, value=None):
 def install_packages(prefix, log, conda=None):
     manager = str(conda) if conda else os.environ.get("CONDA_EXE") or "conda"
     action = "install" if prefix.exists() else "create"
-    print(f"Установка пакетов. Журнал: {log}", flush=True)
+    print(f"Installing packages. Log: {log}", flush=True)
     with open(log, "a") as handle:
         subprocess.run(
             [
@@ -83,20 +83,20 @@ def install_packages(prefix, log, conda=None):
 
 def run_pipeline(args):
     if args.start_stage > args.stop_stage:
-        raise ValueError("Начальный этап не может быть больше последнего")
+        raise ValueError("The first stage cannot be greater than the last stage")
     stages = range(args.start_stage, args.stop_stage + 1)
-    args.input = ask_path("Входной файл или папка", args.input)
+    args.input = ask_path("Input file or directory", args.input)
     if any(number in stages for number in (3, 6, 8)):
-        args.reference = ask_path("Референс FASTA", args.reference)
+        args.reference = ask_path("Reference FASTA", args.reference)
     if 6 in stages:
-        args.annotation = ask_path("Аннотация GFF3", args.annotation)
-    args.output = ask_path("Новая папка результатов", args.output)
+        args.annotation = ask_path("GFF3 annotation", args.annotation)
+    args.output = ask_path("New output directory", args.output)
     args.output.mkdir(parents=True)
 
     install = args.install_packages == "yes"
     if args.install_packages == "ask":
-        answer = input("Установить пакеты в отдельную среду рядом с кодом? [д/Н]: ")
-        install = answer.strip().lower() in ("д", "да", "y", "yes")
+        answer = input("Install packages in a separate environment alongside the scripts? [y/N]: ")
+        install = answer.strip().lower() in ("y", "yes")
     environment = HERE / ".environment"
     directories = list(args.bin_dir)
     if install:
@@ -143,7 +143,7 @@ def run_pipeline(args):
         subprocess.run(command, env=env, check=True)
         completed[number] = target
         source = target
-    print(f"Результаты: {args.output}")
+    print(f"Results: {args.output}")
 
 
 def main():
@@ -164,7 +164,7 @@ def main():
     try:
         run_pipeline(args)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
-        parser.exit(1, f"Ошибка: {error}\n")
+        parser.exit(1, f"Error: {error}\n")
 
 
 if __name__ == "__main__":

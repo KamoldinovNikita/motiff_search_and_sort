@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Выбор совпадений L и R."""
+"""Select L and R alignments."""
 
 import argparse
 import csv

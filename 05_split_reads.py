@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Разделение start, middle20, end."""
+"""Split reads into start, middle20, and end categories."""
 
 import argparse
 import os

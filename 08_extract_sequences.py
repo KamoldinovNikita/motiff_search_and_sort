@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""FASTA фланков и участков между ними."""
+"""Export flanks(uniq) sequences as FASTA."""
 
 import argparse
 import csv

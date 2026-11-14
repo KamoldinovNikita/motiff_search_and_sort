@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Тримминг FASTQ."""
+"""Trim FASTQ reads."""
 
 import argparse
 import json

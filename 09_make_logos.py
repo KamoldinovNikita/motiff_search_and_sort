@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Построение логотипов."""
+"""Generate logo."""
 
 import argparse
 import os

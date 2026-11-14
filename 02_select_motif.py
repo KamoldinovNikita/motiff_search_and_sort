@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Отбор ридов с заданным мотивом."""
+"""Select reads containing the specified motif."""
 
 import argparse
 import os

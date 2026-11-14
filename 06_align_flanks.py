@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Выравнивание и аннотация фланков."""
+"""Align and annotate flanks."""
 
 import argparse
 import csv
