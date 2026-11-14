@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exclude 45 intervals."""
+"""Exclude 45 genome position."""
 
 import argparse
 import os
